@@ -1,22 +1,37 @@
 console.log('--- Task 5 ---');
 
-// const wordSpam = 'SPAM'.toUpperCase;
-const word1 = 'sale';
-const word2 = 'spam';
+function getAllPropValues(array, prop) {
+	// Write code under this line
+	const propValues = [];
 
-function checkForSpam(str) {
-	return str.toLowerCase().includes(word1) || str.toLowerCase().includes(word2);
+	for (const element of array) {
+		// console.log(element);
+
+		if (prop in element) {
+			// console.log(prop);
+			propValues.push(element[prop]);
+		}
+	}
+
+	return propValues;
 }
 
-console.log(checkForSpam('Latest technology news')); // false
+// Объекты и ожидаемый результат
+const products = [
+	{ name: 'Радар', price: 1300, quantity: 4 },
+	{ name: 'Радар', price: 1280, quantity: 2 },
+	{ name: 'Радар', price: 1320, quantity: 1 },
+	{ name: 'Сканер', price: 2700, quantity: 1 },
+	{ name: 'Сканер', price: 2500, quantity: 3 },
+	{ name: 'Дроид', price: 400, quantity: 7 },
+	{ name: 'Захват', price: 1200, quantity: 2 }
+];
 
-console.log(checkForSpam('JavaScript weekly newsletter')); // false
+console.log(getAllPropValues(products, 'name'));
+// ['Радар', 'Радар', 'Радар', 'Сканер', 'Сканер', 'Дроид', 'Захват']
 
-console.log(checkForSpam('Get best sale offers now!')); // true
+console.log(getAllPropValues(products, 'quantity'));
+// [4, 2, 1, 1, 3, 7, 2]
 
-console.log(checkForSpam('[SPAM] How to earn fast money?')); // true
-
-// Функция предикат
-// Функция предикат возвращает true или false
-
-// Напиши функцию checkForSpam(message), принимающую 1 параметр message - строку.Функция проверяет ее на содержание слов spam и sale.Если нашли запрещенное слово то функция возвращает true, если запрещенных слов нет функция возвращает false.Слова в строке могут быть в произвольном регистре.
+console.log(getAllPropValues(products, 'category'));
+//  []
