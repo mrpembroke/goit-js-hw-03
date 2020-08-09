@@ -1,38 +1,73 @@
 console.log('--- Task 3 ---');
 
-function findLongestWord(string = '') {
+// const bestEmployee = '';
+
+const findBestEmployee = function(employees) {
 	// Write code under this line
+	// Object.values(employees);
+	let maxRating = 0;
+	let bestEmployee = '';
+	const entries = Object.entries(employees);
 
-	let wordsArr = string.split(' ');
-	let wordLength = '';
-	let longestWord = '';
-	// console.log('Массив ' + wordsArr);
-	// console.log('Начальное значение слова ' + longestExpectedWord);
-
-	for (let i = 0; i < wordsArr.length; i += 1) {
-		if (wordsArr[i].length > wordLength) {
-			wordLength = wordsArr[i].length;
-			longestWord = wordsArr[i];
-
-			// console.log(wordsArr[i].length);
-			// console.log('Наибольшая длинна слова ' + wordLength);
-			// console.log(longestWord);
+	for (const [ name, rating ] of entries) {
+		// console.log(rating);
+		if ([ rating ] > maxRating) {
+			maxRating = rating;
+			bestEmployee = name;
 		}
 	}
 
-	return longestWord;
-}
+	return bestEmployee;
+};
 
-console.log(findLongestWord('The ewds ew jumped ews ew w essw'));
-// 'jumped'
-console.log(findLongestWord('Google do a roll'));
-// 'Google'
+// const findBestEmployee = function(employees) {
+// 	// Write code under this line
+// 	// Object.values(employees);
+// 	let maxRating = 0;
+// 	let bestEmployee = '';
+// 	const keys = Object.keys(employees);
 
-console.log(findLongestWord('May the force be with you'));
-// 'force'
+// 	for (const key of keys) {
+// 		// console.log(rating);
+// 		if (employees[key] > maxRating) {
+// 			maxRating = employees[key];
+// 			bestEmployee = key;
+// 		}
+// 	}
 
-// ------------------------------------------------------------------------------------
-// Поиск самого длинного слово в строке с пробелами
-// Напиши функцию findLongestWord(string = ""),
-// которая принимает параметром произвольную строку(в строке будут только слова и пробелы)
-// и возвращает самое длинное слово в этой строке
+// 	return bestEmployee;
+// };
+
+// const findBestEmployee = function (employees) {
+// 	// Write code under this line
+// 	// Object.values(employees);
+// 	const employeesValue = Object.values(employees);
+// 	const higherValue = Math.max(...employeesValue);
+
+// Объекты и ожидаемый результат
+
+const developers = {
+	ann: 29,
+	david: 35,
+	helen: 1,
+	lorence: 99
+};
+console.log(findBestEmployee(developers));
+// ('lorence');
+
+const supports = {
+	poly: 12,
+	mango: 17,
+	ajax: 4
+};
+console.log(findBestEmployee(supports));
+// 'mango'
+
+const sellers = {
+	lux: 147,
+	david: 21,
+	kiwi: 19,
+	chelsy: 38
+};
+console.log(findBestEmployee(sellers));
+// 'lux'
