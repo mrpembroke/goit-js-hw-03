@@ -8,7 +8,6 @@ function calculateTotalPrice(array, prop) {
 	for (const object of array) {
 		// console.log(object);
 		if (object.name === prop) {
-			// total = object['price'] * 5;
 			total += object.price * object.quantity;
 		}
 	}
